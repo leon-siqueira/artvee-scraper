@@ -3,8 +3,6 @@
 
 require 'open-uri'
 require 'nokogiri'
-require 'json'
-require 'byebug'
 
 class ArtveeScraper
   BASE_URL = 'https://artvee.com/'
