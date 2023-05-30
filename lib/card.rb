@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # rubocop:disable Lint/MixedRegexpCaptureTypes
 
 class Card
@@ -43,21 +45,20 @@ class Card
   end
 
   def author_life_cycle
-    return { birth_date: @details.first } if @details.count == 1
-    return { birth_date: @details.last } if @details.last.delete(' ').split(/-|–/).count == 1
+    return {} unless @details.count >= 1 && @details.last.match?(/\d+/)
 
     life_cycle_hash(@details.last.delete(' ').split(/-|–/))
   end
 
   def life_cycle_hash(life_cycle)
     {
-      birth_date: life_cycle.first,
-      passing_date: life_cycle.last
+      birth_date: life_cycle[0],
+      passing_date: life_cycle[1]
     }
   end
 
   def nationality
-    return {} if @details.count == 1
+    return {} unless @details.first.match?(/^[a-zA-Z]{2,}/)
 
     { nationality: @details.first }
   end
