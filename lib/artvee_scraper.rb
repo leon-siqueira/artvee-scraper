@@ -1,14 +1,13 @@
-# rubocop:disable Lint/MixedRegexpCaptureTypes
 # frozen_string_literal: true
 
-require 'open-uri'
-require 'nokogiri'
 require_relative 'card'
+require_relative 'http_fetcher'
 
+# Scrapes art data from artvee.com
 class ArtveeScraper
   BASE_URL = 'https://artvee.com/'
   @arts = []
-  @doc = Nokogiri::HTML(URI.open(BASE_URL))
+  @doc = ::Nokogiri::HTML(HttpFetcher.call(BASE_URL))
 
   class << self
     def scrape
@@ -34,14 +33,5 @@ class ArtveeScraper
         tag: card.tag
       }
     end
-
-    # def request_doc
-    #   url = URI.parse(BASE_URL)
-    #   http = Net::HTTP.new(url.host, url.port)
-    #   http.use_ssl = (url.scheme == 'https')
-    #   request = Net::HTTP::Get.new(url.path)
-    #   response = http.request(request)
-    #   response.code.to_i == 200 ? response.body : nil
-    # end
   end
 end

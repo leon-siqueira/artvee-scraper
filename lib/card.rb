@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
-# rubocop:disable Lint/MixedRegexpCaptureTypes
-
+# Helps the ArtveeScraper class to populate the @arts array
 class Card
   attr_reader :img_url, :title, :date, :artist, :artist_details, :tag
 
