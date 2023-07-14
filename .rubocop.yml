@@ -1,0 +1,8 @@
+# .rubocop.yml
+
+Metrics/BlockLength:
+  Exclude:
+    - "spec/**/*.rb"
+
+Lint/MixedRegexpCaptureTypes:
+  Enabled: false
