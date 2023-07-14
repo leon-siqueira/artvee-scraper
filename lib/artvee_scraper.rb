@@ -3,6 +3,8 @@
 require_relative 'card'
 require_relative 'http_fetcher'
 
+require 'nokogiri'
+
 # Scrapes art data from artvee.com
 class ArtveeScraper
   BASE_URL = 'https://artvee.com/'

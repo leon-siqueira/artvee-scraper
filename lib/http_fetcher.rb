@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'net/http'
+
 # Fetches the content of a given URL and returns its body only if the HTTP request receives a 200 response.
 class HttpFetcher
   def self.call(url)

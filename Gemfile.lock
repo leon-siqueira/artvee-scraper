@@ -1,7 +1,9 @@
 PATH
   remote: .
   specs:
-    artvee_scraper (0.2.0)
+    artvee_scraper (0.2.1)
+      net-http (~> 0.3.2)
+      nokogiri (~> 1.15, >= 1.15.2)
 
 GEM
   remote: https://rubygems.org/
