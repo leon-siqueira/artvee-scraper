@@ -9,7 +9,6 @@ require 'nokogiri'
 class ArtveeScraper
   BASE_URL = 'https://artvee.com/'
   @arts = []
-  @doc = ::Nokogiri::HTML(HttpFetcher.call(BASE_URL))
 
   class << self
     def scrape
@@ -20,6 +19,7 @@ class ArtveeScraper
     private
 
     def populate_arts
+      @doc = ::Nokogiri::HTML(HttpFetcher.call(BASE_URL))
       @doc.search('.product-grid-item.product.woodmart-hover-tiled').each do |obj|
         @arts << art_hash(Card.new(obj))
       end
